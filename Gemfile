@@ -9,6 +9,7 @@ gem 'mysql2', '0.2.7'
 gem 'devise', '1.5.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-apps'
 
 # Use unicorn as the web server
 # gem 'unicorn'
