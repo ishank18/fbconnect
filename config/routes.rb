@@ -1,5 +1,9 @@
 Fbconnect::Application.routes.draw do
 
+	resources :tasks
+	resources :projects
+	resources :users
+
   devise_for :users, :controllers => { :sessions => "sessions" }
 	match '/auth/:provider/callback' => 'authentications#create'
 	

@@ -1,0 +1,41 @@
+<script>
+var project_count = 0
+$(function() {
+	$('.add_project').live("click", function() {
+		$("<div class='project_template'>"+$('#templetes > .project_template').clone().html().replace(/pid/g, project_count++)+"</div>").insertBefore(this)
+	});
+	$('.add_task').live("click", function() {
+		var pid = $(this).parent().find("input:first").attr("data-prjid")
+		var tid = $(this).parent().find("input[data-tskid]:last").attr("data-tskid")
+		if(!tid) {
+			tid = -1
+		}
+ 		$("<div class='task_template'>"+$('#templetes > .task_template').clone().html().replace(/pid/g, pid).replace(/tid/g, parseInt(tid)+1)+"</div>").insertBefore(this)
+	});
+})
+</script>
+
+<%= form_for(@user) do |f| %>
+
+	<div><%= f.label :name %></div>
+	<div><%= f.text_field :name %></div>
+	<br>
+	<div id='project_content'></div>
+	<span class='add_project'>Add Project</span>
+	<div><%= f.submit :submit %></div>
+
+<% end %>
+
+
+<div id="templetes">
+	<div class="project_template">
+		<div>Name</div>
+		<div><input type='text' name="user[projects_attributes][pid][name]" data-prjid="pid" /></div>
+		<div id='task_content'></div>
+		<span class='add_task'>Add Task</span>
+	</div>
+	<div class="task_template">
+		<div>Name</div>
+		<div><input type='text' name="user[projects_attributes][pid][tasks_attributes][tid][name]" data-tskid="tid" /></div>
+	</div>
+</div>
