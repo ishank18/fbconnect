@@ -10,6 +10,8 @@ gem 'devise', '1.5.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-apps'
+gem 'thin'
+gem 'omniauth-google-oauth2'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   def apply_omniauth(auth)
-		self.email = auth['info']['email']
 		self.name = auth['info']['name']
 		authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
 	end       

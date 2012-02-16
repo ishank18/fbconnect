@@ -4,13 +4,12 @@ class AuthenticationsController < ApplicationController
 	
 	def create
 		auth = request.env["omniauth.auth"]
-		authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
- 
+		authentication = Authentication.where(:provider => auth['provider'], :uid => auth['uid']).first
 		if authentication
 		  flash[:notice] = "Signed in successfully."
 		  sign_in_and_redirect(:user, authentication.user)
 		else
-		  user = User.new
+		  user = User.find_or_create_by_email(auth['info']['email'])
 		  user.apply_omniauth(auth)
 		  if user.save(:validate => false)
 		    flash[:notice] = "Account created and signed in successfully."
