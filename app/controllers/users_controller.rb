@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   end
 
 	def create
+		@user = User.new(params[:user])
+		if @user.save(:validate => false)
+			render :text => "Done"			
+		else
+			render :text => "Error"
+		end	
 	end
 
 end

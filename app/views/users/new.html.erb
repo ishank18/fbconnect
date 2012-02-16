@@ -20,6 +20,9 @@ $(function() {
 	<div><%= f.label :name %></div>
 	<div><%= f.text_field :name %></div>
 	<br>
+	<div><%= f.label :email %></div>
+	<div><%= f.text_field :email %></div>
+	<br>
 	<div id='project_content'></div>
 	<span class='add_project'>Add Project</span>
 	<div><%= f.submit :submit %></div>
@@ -29,13 +32,13 @@ $(function() {
 
 <div id="templetes">
 	<div class="project_template">
-		<div>Name</div>
+		<div>Project Name</div>
 		<div><input type='text' name="user[projects_attributes][pid][name]" data-prjid="pid" /></div>
 		<div id='task_content'></div>
 		<span class='add_task'>Add Task</span>
 	</div>
 	<div class="task_template">
-		<div>Name</div>
+		<div>Task Name</div>
 		<div><input type='text' name="user[projects_attributes][pid][tasks_attributes][tid][name]" data-tskid="tid" /></div>
 	</div>
 </div>
