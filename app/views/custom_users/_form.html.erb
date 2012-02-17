@@ -2,15 +2,10 @@
 var project_count = 0
 $(function() {
 	$('.add_project').live("click", function() {
-		$("<div class='project_template'>"+$('#templetes > .project_template').clone().html().replace(/pid/g, project_count++)+"</div>").insertBefore(this)
+		$($('#templetes > .project_template').clone()).insertBefore(this)
 	});
 	$('.add_task').live("click", function() {
-		var pid = $(this).parent().find("input:first").attr("data-prjid")
-		var tid = $(this).parent().find("input[data-tskid]:last").attr("data-tskid")
-		if(!tid) {
-			tid = -1
-		}
- 		$("<div class='task_template'>"+$('#templetes > .task_template').clone().html().replace(/pid/g, pid).replace(/tid/g, parseInt(tid)+1)+"</div>").insertBefore(this)
+ 		$($('#templetes > .task_template').clone()).insertBefore(this)
 	});
 	$(".remove").live("click", function() {
 		$(this).parent().remove()
@@ -25,9 +20,7 @@ $(function() {
 	<div><%= f.label :email %></div>
 	<div><%= f.text_field :email %></div>
 	<br>
-	<% if @user.persisted? %>
-		<%= render :partial => "project", :locals => { :user => @user } %>	
-	<% end %>
+	<%= render :partial => "project", :locals => { :user => @user } %>	
 	<div id='project_content'></div>
 	<span class='add_project'>Add Project</span>
 	<div><%= f.submit :submit %></div>
@@ -38,13 +31,13 @@ $(function() {
 <div id="templetes">
 	<div class="project_template">
 		<div>Project Name</div>
-		<div><input type='text' name="user[projects_attributes][pid][name]" data-prjid="pid" /></div>
+		<div><input type='text' name="user[projects_attributes][][name]" data-prjid="pid" /></div>
 		<span class='add_task'>Add Task</span>
 		<span id="remove_project_template" class="remove" >Remove</span>
 	</div>
 	<div class="task_template">
 		<div>Task Name</div>
-		<div><input type='text' name="user[projects_attributes][pid][tasks_attributes][tid][name]" data-tskid="tid" /></div>
+		<div><input type='text' name="user[projects_attributes][][tasks_attributes][][name]" data-tskid="tid" /></div>
 		<span id="remove_task_template" class="remove" >Remove</span>
 	</div>
 </div>
