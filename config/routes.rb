@@ -1,13 +1,12 @@
 Fbconnect::Application.routes.draw do
 
-	post "users", :to => "users#create"
 
 	resources :tasks
 	resources :projects
 
   devise_for :users
 	match '/auth/:provider/callback' => 'authentications#create'
-	resources :users
+	resources :custom_users
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.

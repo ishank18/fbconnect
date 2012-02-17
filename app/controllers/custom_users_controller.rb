@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class CustomUsersController < ApplicationController
   
   def new
   	@user = User.new
@@ -11,6 +11,14 @@ class UsersController < ApplicationController
 		else
 			render :text => "Error"
 		end	
+	end
+
+	def edit
+		@user = User.where(:id => params[:id]).first
+	end
+	
+	def index
+		@users = User.all
 	end
 
 end

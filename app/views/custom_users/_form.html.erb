@@ -15,7 +15,7 @@ $(function() {
 })
 </script>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :url => {:controller => "custom_users"}) do |f| %>
 
 	<div><%= f.label :name %></div>
 	<div><%= f.text_field :name %></div>
