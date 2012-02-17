@@ -1,0 +1,8 @@
+<% project.tasks.each do |task| %>
+	<div class="task_template">
+		<div>Task Name</div>
+		<div><input type='text' name="user[projects_attributes][<%= project.id %>][tasks_attributes][<%= task.id %>][name]" data-tskid="<%= task.id %>" value="<%= task.name %>" /></div>
+		<input type='hidden' name="user[projects_attributes][<%= project.id %>][tasks_attributes][<%= task.id %>][id]" value="<%= task.id %>" />
+		<input name="user[projects_attributes][<%= project.id %>][tasks_attributes][<%= task.id %>][_destroy]" type="hidden" value="0" /><input name="user[projects_attributes][<%= project.id %>][tasks_attributes][<%= task.id %>][_destroy]" type="checkbox" value="1" /><label>Remove</label>
+	</div>
+<% end %>	

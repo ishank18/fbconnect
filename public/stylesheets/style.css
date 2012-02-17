@@ -3,3 +3,4 @@
 .add_project { color:blue; cursor:pointer; }
 .task_template  { margin-left:20px; background:grey; border:1px solid red; }
 .project_template { margin-left:20px; background:silver; border:1px solid black; }
+.remove { color:red; cursor:pointer; float:rigth; }

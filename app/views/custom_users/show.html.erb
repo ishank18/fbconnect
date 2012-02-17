@@ -1,0 +1,14 @@
+<%= @user.name %>
+<%= @user.email %>
+<ol>
+<% @user.projects.each do |project| %>
+	<li>
+		<%= project.name %>
+		<ul>
+		<% project.tasks.each do |task| %>
+			<li><%= task.name %></li>
+		<% end %>	
+		</ul>
+	</li>
+<% end %>	
+</ol>

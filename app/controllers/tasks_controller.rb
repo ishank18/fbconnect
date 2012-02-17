@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+  	@task = Task.where(:id => params[:id]).first
   end
 
 end

@@ -8,6 +8,8 @@
 </head>
 <body>
 <div style="float:right"><%= (link_to 'Sign Out', destroy_user_session_path, :method => :delete) if user_signed_in? %></div>
+<%= link_to "Home", "/" %>
+<div style="clear:both"></div><br><br>
 <%= yield %>
 
 </body>

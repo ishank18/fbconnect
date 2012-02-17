@@ -1,0 +1,12 @@
+<% user.projects.each do |project| %>
+	<div class="project_template">
+		<div>Project Name</div>
+		<div><input type='text' name="user[projects_attributes][<%= project.id %>][name]" data-prjid="<%= project.id %>" value="<%= project.name %>" /></div>
+		<input type='hidden' name="user[projects_attributes][<%= project.id %>][id]" value="<%= project.id %>" />
+		<input name="user[projects_attributes][<%= project.id %>][_destroy]" type="hidden" value="0" /><input name="user[projects_attributes][<%= project.id %>][_destroy]" type="checkbox" value="1" /><label>Remove</label>
+	
+		<%= render :partial => "task", :locals => { :project => project } %>	
+		<div id='task_content'></div>
+		<span class='add_task'>Add Task</span>
+	</div>
+<% end %>

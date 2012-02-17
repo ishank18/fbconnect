@@ -7,9 +7,9 @@ class CustomUsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save(:validate => false)
-			render :text => "Done"			
+			redirect_to custom_user_path(@user), :alert => "User Successfully Update!"		
 		else
-			render :text => "Error"
+			render :action => "new"
 		end	
 	end
 
@@ -17,8 +17,22 @@ class CustomUsersController < ApplicationController
 		@user = User.where(:id => params[:id]).first
 	end
 	
+	
+	def update
+		@user = User.where(:id => params[:id]).first	
+		if(@user.update_attributes(params[:user]))
+			redirect_to custom_user_path(@user), :alert => "User Successfully Update!"
+		else
+			render :text => "Done"	
+		end
+	end
+	
 	def index
 		@users = User.all
+	end
+	
+	def show
+		@user = User.where(:id => params[:id]).first
 	end
 
 end
