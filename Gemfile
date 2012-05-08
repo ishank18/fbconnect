@@ -12,8 +12,14 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-apps'
 gem 'thin'
 gem 'omniauth-google-oauth2'
-
+gem "capybara", :git => "git://github.com/jnicklas/capybara.git"
+gem "cucumber", "1.1.0"
+gem "cucumber-rails", ">= 0.5.1"
+gem "webrat"
+gem "rspec"
+gem "rspec-rails"
 gem 'jquery-rails', '>= 1.0.12'
+gem "database_cleaner"
 
 # Use unicorn as the web server
 # gem 'unicorn'
